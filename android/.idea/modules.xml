@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dairy.iml" filepath="$PROJECT_DIR$/.idea/modules/Dairy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Dairy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Dairy.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-940179205/Dairy.react-native-android-location-enabler.iml" filepath="$PROJECT_DIR$/.idea/modules/-940179205/Dairy.react-native-android-location-enabler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1499688502/Dairy.react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1499688502/Dairy.react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-736462877/Dairy.react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/-736462877/Dairy.react-native-community_checkbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/230584857/Dairy.react-native-community_datetimepicker.iml" filepath="$PROJECT_DIR$/.idea/modules/230584857/Dairy.react-native-community_datetimepicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/425010632/Dairy.react-native-geolocation-service.iml" filepath="$PROJECT_DIR$/.idea/modules/425010632/Dairy.react-native-geolocation-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2076903463/Dairy.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-2076903463/Dairy.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/487760689/Dairy.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/487760689/Dairy.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-130395546/Dairy.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-130395546/Dairy.react-native-vector-icons.iml" />
+    </modules>
+  </component>
+</project>

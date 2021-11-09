@@ -1,0 +1,9 @@
+com/dairy/BuildConfig.java
+ com.dairy.BuildConfig
+com/dairy/MainApplication.java
+ com.dairy.MainApplication
+ com.dairy.MainApplication$1
+com/dairy/MainActivity.java
+ com.dairy.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

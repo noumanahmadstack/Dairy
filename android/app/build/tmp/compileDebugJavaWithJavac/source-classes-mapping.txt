@@ -1,0 +1,14 @@
+com/dairy/BuildConfig.java
+ com.dairy.BuildConfig
+com/dairy/ReactNativeFlipper.java
+ com.dairy.ReactNativeFlipper
+ com.dairy.ReactNativeFlipper$1
+ com.dairy.ReactNativeFlipper$2
+ com.dairy.ReactNativeFlipper$2$1
+com/dairy/MainApplication.java
+ com.dairy.MainApplication
+ com.dairy.MainApplication$1
+com/dairy/MainActivity.java
+ com.dairy.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
