@@ -1,4 +1,4 @@
-#Tue Oct 05 15:41:15 PKT 2021
-base.0=D\:\\React Native\\DairyApp\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+#Thu Nov 18 16:34:29 PKT 2021
+base.0=C\:\\Users\\ahmad\\Desktop\\React Native\\Dairy\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -21,25 +21,25 @@ const Stack = createNativeStackNavigator();
 
 
 export default class Routes extends React.Component {
-   
+
     render() {
         return (
-       
-            
+
+
 
             <NavigationContainer>
 
                 <Stack.Navigator initialRouteName="splashScreen" >
-                <Stack.Screen name="MyTabs" options = {{headerShown: false}} component={MyTabs} />
+                    <Stack.Screen name="MyTabs" options={{ headerShown: false }} component={MyTabs} />
 
                     <Stack.Screen options={{ headerShown: false }} name="splashScreen" component={splashScreen} />
-                    <Stack.Screen options={{ headerTitleAlign: "center", title: content.PackgingList, animation: 'slide_from_right', headerBackVisible: false }}  name="PackageList" component={PackageList}   />
+                    <Stack.Screen options={{ headerTitleAlign: "center", title: content.PackgingList, animation: 'slide_from_right' }} name="PackageList" component={PackageList} />
                     <Stack.Screen options={{ headerShown: false, animation: 'slide_from_right' }} name="Login" component={Login} />
                     <Stack.Screen name="Calender" options={{ headerTitleAlign: "center", title: content.DeliveryDate, animation: 'slide_from_right', headerBackVisible: false }} component={DatePicker} />
-                   
+
                 </Stack.Navigator>
             </NavigationContainer>
-            
+
         )
     }
 }

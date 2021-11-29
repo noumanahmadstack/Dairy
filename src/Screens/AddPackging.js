@@ -32,6 +32,9 @@ const AddPackging = ({ }) => {
   }
 
   const addProductdetail = (count, item, type) => {
+
+    count = count.replace(/[^0-9]/g, '');
+
     let title = item.productName
     let body = {
       ProductName: item.productName,
@@ -40,6 +43,7 @@ const AddPackging = ({ }) => {
       Size: type,
       DeliveryManId: user.id
     }
+
     let found = false;
     for (const index in productDelivery) {
       const user = productDelivery[index];
@@ -91,19 +95,21 @@ const AddPackging = ({ }) => {
                   <Text numberOfLines={2} style={{ fontWeight: 'bold' }}>{item.productName}</Text>
                 </View>
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', flex: 1 }}>
-                  <TextInput value={count} style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5, }]} keyboardType="numeric" selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '1') }} />
-                  <TextInput value={count} style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="numeric" selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '1.5') }} />
-                  <TextInput value={count} style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="numeric" selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '2') }} />
+                  <TextInput keyboardType="phone-pad" value={count} numeric style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5, }]} selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '1') }} />
+                  <TextInput value={count} style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="number-pad" selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '1.5') }} />
+                  <TextInput value={count} style={[Theme.productDetailInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="number-pad" selectionColor="#3489EB" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, '2') }} />
                 </View>
               </TouchableOpacity>
             ))}
           </ScrollView>
         }
       </View>
-        <Btn disabled = {!btn} onPress={() => submitPackging()} text={content.OK} containerStyle={ !btn ?{backgroundColor:"grey",borderTopRightRadius: 30,
+      <Btn disabled={!btn} onPress={() => submitPackging()} text={content.OK} containerStyle={!btn ? {
+        backgroundColor: "grey", borderTopRightRadius: 30,
         borderBottomRightRadius: 30,
         marginRight: 55,
-        marginBottom: 20,}:Theme.btnStyle} textStyle={Theme.btnTextstyle} />
+        marginBottom: 20,
+      } : Theme.btnStyle} textStyle={Theme.btnTextstyle} />
     </SafeAreaView>
   );
 }

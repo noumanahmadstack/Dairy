@@ -1,10 +1,11 @@
 import Color from "./Colors";
-import { StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from "react-native-elements";
 
 const height = Dimensions.get('screen').height
 const width = Dimensions.get('screen').width
 const Theme = StyleSheet.create({
+    datePickerViewDes: { marginTop: 10, borderColor: '#3489eb', borderRadius: 10, elevation: 1, borderWidth: 2, padding: 5, alignItems: 'center', backgroundColor: '#fff' },
     container: {
         flex: 1,
     },
@@ -24,12 +25,12 @@ const Theme = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'center'
     },
-    datetext:{
+    datetext: {
         fontSize: 16,
         // paddingLeft: 21,
         color: '#000',
         fontWeight: 'bold'
-        
+
     },
     textinput: {
         // marginLeft: 100,
@@ -74,7 +75,7 @@ const Theme = StyleSheet.create({
         borderBottomLeftRadius: 30,
         marginLeft: 55,
         marginBottom: 20,
-        marginTop:10,
+        marginTop: 10,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -102,7 +103,7 @@ const Theme = StyleSheet.create({
         marginTop: 5, color: '#000',
     },
     lstview: {
-       flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center'
+        flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'
     },
     modalHeading: {
         fontWeight: 'bold', fontSize: 24
@@ -123,7 +124,7 @@ const Theme = StyleSheet.create({
     },
     ProductHeading: {
         fontWeight: 'bold', fontSize: 18
-        
+
     },
     imageNewUser: {
         height: 70,
@@ -132,8 +133,8 @@ const Theme = StyleSheet.create({
         alignSelf: 'center'
     },
     flatlistView: {
-        alignItems: 'center', 
-        }
+        alignItems: 'center',
+    }
     , modalView: {
         justifyContent: 'flex-start'
     }, modalBtn: {
@@ -143,7 +144,7 @@ const Theme = StyleSheet.create({
         elevation: 2,
         backgroundColor: '#3489eb'
     },
-    
+
     modalbtnTextStyle: {
         color: "white",
         fontWeight: "bold",

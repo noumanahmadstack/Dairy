@@ -66,7 +66,11 @@ const CustomerList = ({ navigation, route }) => {
     let body = {
       id: user.id
     }
+
     let resp = await customer_list(body)
+
+    // console.log("ahmad akjsdasjldasdja", resp.data[0].customerProductDetailApi);
+
     if (resp !== 'Error') {
       setData(resp.data)
       setLoading(false)
@@ -77,15 +81,23 @@ const CustomerList = ({ navigation, route }) => {
   }
 
   const addProductdetail = async (count, item, indexs) => {
+
+    // let abc = count.replace(/[^0-9]/g, '');
+    // setCount(abc)
     setCount(null)
     let body = {
       customerId: modalSate.data.customerId,
       productId: item.productId,
       saleDate: new Date().toISOString().split("T")[0],
       quantity: count,
-      productName: item.productName
+      productName: item.productName,
+      productPrice: item.productPrice,
     }
+
+    console.log(body, "body")
+
     respData.splice(indexs, 1, body);
+
   }
 
 
@@ -98,7 +110,7 @@ const CustomerList = ({ navigation, route }) => {
         newdata.push(element)
       }
     }
-    console.log(newdata,"dfgh")
+
     let resp = await save_Delivery(newdata)
     if (resp !== 'Error') {
       setLoading(true)
@@ -183,7 +195,11 @@ const CustomerList = ({ navigation, route }) => {
                   <View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                       <Text style={{ color: 'black' }}>{item.productName}</Text>
-                      <TextInput value={count} style={[Theme.modalInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="numeric" selectionColor="#3489eb" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, index) }} >{item.quantity.toString()}</TextInput>
+                      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <TextInput style={[Theme.modalInputStyle, { borderColor: index === errorIndex ? 'red' : null, borderWidth: index === errorIndex ? 1 : 0, marginVertical: 5 }]} keyboardType="numeric" selectionColor="#3489eb" blurOnSubmit={false} onChangeText={(count) => { addProductdetail(count, item, index) }} >{item.quantity.toString()}</TextInput>
+                        <Text style={{ color: 'black' }}>{'  '}Ltr</Text>
+                      </View>
+
                     </View>
                     {index === errorIndex && indexError !== "" ?
                       <Text style={{ color: 'red', textAlign: 'center', marginVertical: 10 }}>{indexError}</Text>

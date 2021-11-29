@@ -8,7 +8,7 @@ import Loader1 from '../component/loader';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const PackageList = ({route,navigation}) => {
+const PackageList = ({ route, navigation }) => {
   // const {date}= route.params;
   const [Package, setPackages] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -16,13 +16,15 @@ const PackageList = ({route,navigation}) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [date, setDate] = useState(new Date());
 
-  // alert("fsgfs")
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () => <TouchableOpacity style={{ padding: 5 }} onPress={ () => {showDatePicker()}}><AntDesign name='calendar' size={16} /></TouchableOpacity>,
+      headerRight: () => <TouchableOpacity style={{ padding: 5 }} onPress={() => { showDatePicker() }}><AntDesign name='calendar' size={16} /></TouchableOpacity>,
     });
   }, [navigation]);
+
+
+
 
 
   const showDatePicker = () => {
@@ -32,7 +34,7 @@ const PackageList = ({route,navigation}) => {
   const handleConfirm = (date) => {
     // alert(date)
     setDate(date)
-  
+
     setDatePickerVisibility(false)
     // alert(date.toISOString().split("T")[0])
   };
@@ -70,14 +72,14 @@ const PackageList = ({route,navigation}) => {
         }
       }
 
-   for (let index = 0; index < array.length; index++) {
-     const element = array[index];
-     if(element.data.length !== 0){
-       setView(true)
-       break;
-     }
-     
-   }
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element.data.length !== 0) {
+          setView(true)
+          break;
+        }
+
+      }
       setPackages(array)
       setLoading(false)
     } else {
@@ -88,7 +90,7 @@ const PackageList = ({route,navigation}) => {
   useEffect(async () => {
     await getPackage(date);
   }, [date])
-  
+
   return (
     <SafeAreaView style={[Theme.container, { backgroundColor: '#6cd2ff' }]}>
       <StatusBar backgroundColor="#000" />
@@ -98,11 +100,11 @@ const PackageList = ({route,navigation}) => {
         <Text style={Theme.datetext}>{content.size}</Text>
       </View>
       <DateTimePickerModal
-  isVisible={isDatePickerVisible}
-  mode="date"
-  onConfirm={handleConfirm}
-  onCancel={() => setDatePickerVisibility(false)}
-/>
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={() => setDatePickerVisibility(false)}
+      />
       <View style={{ flex: 1 }}>
         {isLoading ? <Loader1 /> :
           view == true ?
@@ -135,7 +137,7 @@ const PackageList = ({route,navigation}) => {
             : <Text style={{ flex: 1, textAlign: 'center', textAlignVertical: 'center', color: 'white', fontWeight: 'bold', fontSize: 18 }}> {content.NORecord}</Text>
         }
       </View>
-     
+
     </SafeAreaView>
   )
 

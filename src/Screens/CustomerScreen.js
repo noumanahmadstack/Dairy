@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, TextInput, View, Text, PermissionsAndroid, TouchableOpacity, ScrollView, SafeAreaView, FlatList, ToastAndroid } from 'react-native';
 import MultiSelect from 'react-native-multiple-select';
 import Modal from "react-native-modal";
 import CircleBackground from '../component/background';
 import { FormInput } from '../../utilis/Text_input';
 import { CustomerScreen_validation } from '../../utilis/validation';
-import { ProductList, CustomerReg } from "../../utilis/Api/Api_controller";
+import { ProductList, CustomerReg, customer_list } from "../../utilis/Api/Api_controller";
 import Geolocation from 'react-native-geolocation-service';
 import { Btn } from "../../utilis/Btn";
 import { save_data, get_data } from "../../utilis/AsyncStorage/Controller";
@@ -13,13 +13,14 @@ import Theme from '../Theme/Theme';
 import content from "../component/urduContent";
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 import Loader from "../../utilis/Loader";
+import { Dimensions } from 'react-native';
 
 const AddCustomer = ({ navigation }) => {
   const [modalSate, setModalState] = useState({ show: false, id: '' });
   const [userName, setUserName] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [userMobile, setUserMobile] = useState('');
-  const[serialNo, setSerialNo] = useState('')
+  const [serialNo, setSerialNo] = useState('')
   const [userPrice, setUserPrice] = useState('');
   const [quantity, setquantity] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,29 +28,61 @@ const AddCustomer = ({ navigation }) => {
   let [selectedItems, setSelectedItems] = useState([]);
   const [product, setProducts] = useState([]);
   const [data, setData] = useState([]);
+  const [custList, setCustList] = useState([]);
   const [errorIndex, setErrorIndex] = useState('')
   const [indexError, setIndexError] = useState('')
   const [q, setQ] = useState(false)
-  
+  const windowHeight = Dimensions.get('window').height;
+  const scrollRef = useRef();
+  const inputTwoRef = useRef();
+  const inputThreeRef = useRef();
+  const inputFourRef = useRef();
+
   const onSelectedItemsChange = (selectedItems) => {
+
     setSelectedItems(selectedItems);
-    var array = []
+
+    let copyData = data;
+
     for (const index in selectedItems) {
       let selected = selectedItems[index]
-      for (const index in product) {
-        if (selected == product[index].productId) {
-          var data = {
-            ProductId: selected,
-            productName: product[index].productName,
-            AdditionalRate: '',
-            Quantity: ''
+
+      let found = copyData.findIndex((check) => { return check.ProductId.toString() == selected.toString() });
+
+      if (found == -1) {
+
+        for (const index in product) {
+          if (selected == product[index].productId) {
+            var singleProduct = {
+              ProductId: selected,
+              productName: product[index].productName,
+              AdditionalRate: '',
+              Quantity: ''
+            }
+            break
           }
-          break
         }
+        copyData.push(singleProduct)
       }
-      array.push(data)
-      setData(array)
+
     }
+
+    if (copyData.length != selectedItems.length) {
+
+      for (let index = 0; index < copyData.length; index++) {
+        const element = copyData[index];
+
+        let found = selectedItems.findIndex((check) => { return check.toString() == element.ProductId.toString() });
+
+        if (found == -1) {
+          copyData.splice(index, 1);
+        }
+
+      }
+
+    }
+
+    setData(copyData)
   };
   const addProductdetail = async (AdditionalRate, item, index, type) => {
     let title = item.productName
@@ -79,6 +112,7 @@ const AddCustomer = ({ navigation }) => {
   }
   useEffect(async () => {
     await getProduct();
+    await getCustomers();
   }, [])
   const getProduct = async () => {
     let resp = await ProductList()
@@ -89,10 +123,30 @@ const AddCustomer = ({ navigation }) => {
     }
   }
 
+  const getCustomers = async () => {
+    // setLoading(true)
+    let { user } = await get_data("USER")
+    let body = {
+      id: user.id
+    }
+    let resp = await customer_list(body)
+    if (resp !== 'Error') {
+
+      let serialNumbers = resp.data.map((item) => {
+        return item.serialNo.toString();
+      })
+      setCustList(serialNumbers)
+      // setLoading(false)
+    } else {
+      ToastAndroid.show("کچھ غلط ہے", ToastAndroid.LONG)
+      // setLoading(false)
+    }
+  }
 
 
   const saveCustomer = async () => {
-    let validate = CustomerScreen_validation(userName, userAddress, userMobile,serialNo, data.length)
+
+    let validate = CustomerScreen_validation(userName, userAddress, userMobile, serialNo, data.length, custList)
     if (validate.valid == false) {
       setErrortext(validate.errors);
     } else {
@@ -144,7 +198,7 @@ const AddCustomer = ({ navigation }) => {
                       CustomerName: userName,
                       CustomerAddress: userAddress,
                       CustomerContactNo: userMobile,
-                      SerialNo:serialNo,
+                      SerialNo: serialNo,
                       CustomerEmail: "test@gmail.com",
                       Longitude: position.coords.longitude,
                       Latitude: position.coords.latitude,
@@ -188,6 +242,7 @@ const AddCustomer = ({ navigation }) => {
     }
   }
   const OK = () => {
+
     const ePindex = data.findIndex(item => item.AdditionalRate == "");
     const eQindex = data.findIndex(item => item.Quantity == "");
     const lPindex = data.findIndex(item => item.AdditionalRate < 10);
@@ -222,8 +277,16 @@ const AddCustomer = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <CircleBackground />
       <Loader animating={loading} />
-      <ScrollView>
+      <ScrollView
+
+        ref={scrollRef}
+        onContentSizeChange={() => scrollRef.current.scrollToEnd({ animated: true })}
+
+      >
         <FormInput
+          onSubmitEditing={() => { inputTwoRef.current.focus() }}
+          returnKeyType="next"
+          blurOnSubmit={false}
           text_input_container={[Theme.textinput, { marginLeft: 0 }]}
           containerStyle={{ marginLeft: Theme.textinput.marginLeft }}
           style={{ flex: 1, color: 'black' }}
@@ -235,6 +298,10 @@ const AddCustomer = ({ navigation }) => {
           error={errortext === "Please Enter Your name" ? "براہ مہربانی اپنا نام درج کریں" : null || errortext === "Name must should contain 3 letters" ? "Name must should contain 3 letters" : null}
         />
         <FormInput
+          abcRef={inputTwoRef}
+          onSubmitEditing={() => { inputThreeRef.current.focus() }}
+          returnKeyType="next"
+          blurOnSubmit={false}
           text_input_container={[Theme.textinput, { marginLeft: 0 }]}
           containerStyle={{ marginLeft: Theme.textinput.marginLeft }}
           style={{ flex: 1, color: 'black' }}
@@ -246,6 +313,10 @@ const AddCustomer = ({ navigation }) => {
           error={errortext === "Please Enter Your Address" ? "براہ کرم اپنا پتہ درج کریں۔" : null}
         />
         <FormInput
+          abcRef={inputThreeRef}
+          onSubmitEditing={() => { inputFourRef.current.focus() }}
+          returnKeyType="next"
+          blurOnSubmit={false}
           text_input_container={[Theme.textinput, { marginLeft: 0 }]}
           containerStyle={{ marginLeft: Theme.textinput.marginLeft }}
           style={{ flex: 1, color: 'black' }}
@@ -257,7 +328,8 @@ const AddCustomer = ({ navigation }) => {
           placeholderTextColor="#469238"
           error={errortext === "Please Enter Your Mobile" ? "براہ کرم اپنا موبائل درج کریں۔" : null || errortext === "Phone Number must should contain 11 digits" ? "فون نمبر 11 ہندسوں پر مشتمل ہونا چاہیے۔" : null}
         />
-         <FormInput
+        <FormInput
+          abcRef={inputFourRef}
           text_input_container={[Theme.textinput, { marginLeft: 0 }]}
           containerStyle={{ marginLeft: Theme.textinput.marginLeft }}
           style={{ flex: 1, color: 'black' }}
@@ -267,7 +339,7 @@ const AddCustomer = ({ navigation }) => {
           keyboardType="number-pad"
           selectionColor="#469238"
           placeholderTextColor="#469238"
-          error={errortext === "Please Enter Your Serial No" ? "براہ کرم سیریل نمبر درج کریں۔": null}
+          error={errortext === "Please Enter Your Serial No" ? "براہ کرم سیریل نمبر درج کریں۔" : null || errortext === "Serial Number Already Exists" ? "سیریل نمبر پہلے سے موجود ہے۔" : null}
         />
         <MultiSelect
           styleMainWrapper={{ marginTop: 22, marginRight: -20, marginLeft: 50 }}
@@ -295,10 +367,10 @@ const AddCustomer = ({ navigation }) => {
           hideSubmitButton
         />
         {errortext === "Please Select Product" ? <Text style={{ color: 'red', marginVertical: 5, textAlign: 'center' }}>{content.SelectProduct}</Text> : null}
-        {data.length!== 0 && <Btn  onPress={() => { setModalState({ ...modalSate, show: true, data }) }} text={content.EnterProductDetail} containerStyle={Theme.DetailbtnStyle} textStyle={Theme.btnTextstyle} />}
-       
+        {data.length !== 0 && <Btn onPress={() => { setModalState({ ...modalSate, show: true, data }) }} text={content.EnterProductDetail} containerStyle={Theme.DetailbtnStyle} textStyle={Theme.btnTextstyle} />}
+
         <Modal backdropOpacity={0.6} isVisible={modalSate.show} onRequestClose={() => { setModalState({ ...modalSate, show: false }); }} >
-          <View style={{ backgroundColor: "#f2f2f2", borderRadius: 20, padding: 35, }}>
+          <View style={{ backgroundColor: "#f2f2f2", borderRadius: 20, padding: 35, height: windowHeight / 1.3 }}>
             <View style={{ alignItems: 'center' }}>
               <Text style={Theme.modalHeading}>{content.ProductDetail}</Text>
             </View>
@@ -332,6 +404,7 @@ const AddCustomer = ({ navigation }) => {
               )
               }
             />
+
             <TouchableOpacity style={Theme.modalBtn} onPress={() => { OK() }} >
               <Text style={Theme.modalbtnTextStyle}>{content.OK}</Text>
             </TouchableOpacity>
@@ -339,7 +412,7 @@ const AddCustomer = ({ navigation }) => {
         </Modal>
       </ScrollView>
       <Btn onPress={() => saveCustomer()} text={content.OK} containerStyle={Theme.btnStyle} textStyle={Theme.btnTextstyle} />
-    </SafeAreaView>
+    </SafeAreaView >
   );
 };
 export default AddCustomer;

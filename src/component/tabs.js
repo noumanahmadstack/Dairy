@@ -19,7 +19,13 @@ const MyTabs = ({ route, navigation }) => {
   return (
 
 
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarActiveBackgroundColor: '#d6e0f5',
+      }
+
+      )}
+    >
       <Tab.Screen initialParams={route.params.date} options={{
         title: content.CustomersList,
         headerRight: () => <TouchableOpacity style={{ padding: 5 }} onPress={async () => { await Logout(navigation) }}><AntDesign name='logout' size={16} /></TouchableOpacity>,
@@ -62,7 +68,7 @@ const MyTabs = ({ route, navigation }) => {
       }} name="ViewReport" component={ViewReport} />
 
 
-    </Tab.Navigator>
+    </Tab.Navigator >
   );
 }
 export default MyTabs;

@@ -5,7 +5,7 @@ export const loginValidation = (username, password) => {
             errors: username === '' ? "Please Enter UserName" : null
         }
     }
-    else if (password === '' ) {
+    else if (password === '') {
         return {
             valid: false,
             errors: password === '' ? "Please Enter Your Password" : null
@@ -119,7 +119,7 @@ export const Recipt_validation = (username, amount, d_type, p_type) => {
 
 }
 
-export const CustomerScreen_validation = (username, address, mobile,serialNo, data) => {
+export const CustomerScreen_validation = (username, address, mobile, serialNo, data, serialList) => {
     if (username === "") {
         return {
             valid: false,
@@ -147,10 +147,17 @@ export const CustomerScreen_validation = (username, address, mobile,serialNo, da
             errors: mobile.length < 11 ? "Phone Number must should contain 11 digits" : null
         }
     }
-    else if (serialNo ==='') {
+    else if (serialNo === '') {
         return {
             valid: false,
             errors: serialNo === '' ? "Please Enter Your Serial No" : null
+        }
+    }
+
+    else if (serialList.indexOf(serialNo) != '-1') {
+        return {
+            valid: false,
+            errors: serialList.indexOf(serialNo) != '-1' ? "Serial Number Already Exists" : null
         }
     }
 

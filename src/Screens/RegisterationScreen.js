@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, ImageBackground} from 'react-native';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import { FormInput } from '../../utilis/Text_input';
 import Theme from '../Theme/Theme';
 import { Btn } from "../../utilis/Btn";
@@ -33,62 +33,62 @@ const RegisterScreen = ({ navigation }) => {
       <ImageBackground source={require('../../assets/milkbg.jpg')} style={Theme.loginBackground} >
         {/* <Loader loading={loading} /> */}
 
-          <View style={Theme.container}>
-            <Text style={Theme.heading}>REGISTER</Text>
-          </View>
+        <View style={Theme.container}>
+          <Text style={Theme.heading}>REGISTER</Text>
+        </View>
 
 
-            <FormInput
-              style={Theme.textinput}
-              onChangeText={(userName) => { setUserName({ errors: '' }), setUserName(userName) }}
-              underlineColorAndroid="#0000"
-              placeholder="Enter Name"
-              selectionColor="#469238"
-              placeholderTextColor="#469238"
-              autoCapitalize="sentences"
-              error={errortext === "Please enter your name" ? "Please enter your name" : null || errortext === "Name must should contain 3 letters" ? "Name must should contain 3 letters" : null}
-            />
-
-
-
-            <FormInput
-              style={Theme.textinput}
-              onChangeText={(userEmail) => { setUserEmail({ errors: '' }), setUserEmail(userEmail) }}
-              underlineColorAndroid="#0000"
-              placeholder="Enter Email"
-              selectionColor="#469238"
-              placeholderTextColor="#469238"
-              keyboardType="email-address"
-              error={errortext === "Please Enter Your Email" ? "Please Enter Your Email" : null || errortext === "Email format is invalid" ? "Email format is invalid" : null}
-            />
-
-
-            <FormInput
-              style={Theme.textinput}
-              onChangeText={(userPassword) => { setUserPassword({ errors: '' }), setUserPassword(userPassword) }}
-              underlineColorAndroid="#0000"
-              placeholder="Enter Password"
-              selectionColor="#469238"
-              placeholderTextColor="#469238"
-              secureTextEntry={true}
-              error={errortext === "Please Enter Your Password" ? "Please Enter Your Password" : null || errortext === "Password must should contain 6 digits" ? "Password must should contain 6 digits" : null}
-            />
+        <FormInput
+          style={Theme.textinput}
+          onChangeText={(userName) => { setUserName({ errors: '' }), setUserName(userName) }}
+          underlineColorAndroid="#0000"
+          placeholder="Enter Name"
+          selectionColor="#469238"
+          placeholderTextColor="#469238"
+          autoCapitalize="sentences"
+          error={errortext === "Please enter your name" ? "Please enter your name" : null || errortext === "Name must should contain 3 letters" ? "Name must should contain 3 letters" : null}
+        />
 
 
 
-            <FormInput
-              style={Theme.textinput}
-              onChangeText={(confirmpassword) => { setconfirmpassword({ errors: '' }), setconfirmpassword(confirmpassword) }}
-              underlineColorAndroid="#0000"
-              placeholder="Confirm Password"
-              selectionColor="#469238"
-              placeholderTextColor="#469238"
-              secureTextEntry={true}
-              error={errortext === "Please enter your confirm password" ? "Please enter your confirm password" : null || errortext === "Password doesn't match" ? "Password doesn't match" : null}
-            />
-            <Btn onPress={() => submit()} text="SignUp" containerStyle={Theme.btnStyle} textStyle={Theme.btnTextstyle} />
-            <CombineText text="Already have an account?" text1="Login" onPress={() => { submit() }} />
-            {/* <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+        <FormInput
+          style={Theme.textinput}
+          onChangeText={(userEmail) => { setUserEmail({ errors: '' }), setUserEmail(userEmail) }}
+          underlineColorAndroid="#0000"
+          placeholder="Enter Email"
+          selectionColor="#469238"
+          placeholderTextColor="#469238"
+          keyboardType="email-address"
+          error={errortext === "Please Enter Your Email" ? "Please Enter Your Email" : null || errortext === "Email format is invalid" ? "Email format is invalid" : null}
+        />
+
+
+        <FormInput
+          style={Theme.textinput}
+          onChangeText={(userPassword) => { setUserPassword({ errors: '' }), setUserPassword(userPassword) }}
+          underlineColorAndroid="#0000"
+          placeholder="Enter Password"
+          selectionColor="#469238"
+          placeholderTextColor="#469238"
+          secureTextEntry={true}
+          error={errortext === "Please Enter Your Password" ? "Please Enter Your Password" : null || errortext === "Password must should contain 6 digits" ? "Password must should contain 6 digits" : null}
+        />
+
+
+
+        <FormInput
+          style={Theme.textinput}
+          onChangeText={(confirmpassword) => { setconfirmpassword({ errors: '' }), setconfirmpassword(confirmpassword) }}
+          underlineColorAndroid="#0000"
+          placeholder="Confirm Password"
+          selectionColor="#469238"
+          placeholderTextColor="#469238"
+          secureTextEntry={true}
+          error={errortext === "Please enter your confirm password" ? "Please enter your confirm password" : null || errortext === "Password doesn't match" ? "Password doesn't match" : null}
+        />
+        <Btn onPress={() => submit()} text="SignUp" containerStyle={Theme.btnStyle} textStyle={Theme.btnTextstyle} />
+        <CombineText text="Already have an account?" text1="Login" onPress={() => { submit() }} />
+        {/* <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
               <Text style={{ fontWeight: 'bold' }}>Already have an account?</Text>
               <TouchableOpacity
                 onPress={() => { submit() }}

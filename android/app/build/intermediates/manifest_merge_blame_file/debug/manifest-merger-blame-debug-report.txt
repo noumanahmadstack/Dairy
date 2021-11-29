@@ -9,79 +9,79 @@
 9        android:targetSdkVersion="30" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->D:\React Native\DairyApp\android\app\src\debug\AndroidManifest.xml:5:5-77
-11-->D:\React Native\DairyApp\android\app\src\debug\AndroidManifest.xml:5:22-75
+11-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:4:5-67
-12-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:4:22-64
+12-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:4:22-64
 13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-13-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:5:5-79
-13-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:5:22-76
+13-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:5:5-79
+13-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:5:22-76
 14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-14-->[com.facebook.flipper:flipper:0.93.0] C:\Users\DELL\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:5-76
-14-->[com.facebook.flipper:flipper:0.93.0] C:\Users\DELL\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:22-73
+14-->[com.facebook.flipper:flipper:0.93.0] C:\Users\ahmad\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:5-76
+14-->[com.facebook.flipper:flipper:0.93.0] C:\Users\ahmad\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:22-73
 15
 16    <application
-16-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:7:5-26:19
+16-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:7:5-26:19
 17        android:name="com.dairy.MainApplication"
-17-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:8:7-38
+17-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:8:7-38
 18        android:allowBackup="false"
-18-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:12:7-34
+18-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:12:7-34
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.6.0] C:\Users\DELL\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.6.0] C:\Users\ahmad\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
-21-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:10:7-41
+21-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:10:7-41
 22        android:label="@string/app_name"
-22-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:9:7-39
+22-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:9:7-39
 23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:11:7-52
+23-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:11:7-52
 24        android:testOnly="true"
 25        android:theme="@style/AppTheme"
-25-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:14:7-38
+25-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:14:7-38
 26        android:usesCleartextTraffic="true" >
-26-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:13:9-44
+26-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:13:9-44
 27        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-27-->D:\React Native\DairyApp\android\app\src\debug\AndroidManifest.xml:11:9-86
-27-->D:\React Native\DairyApp\android\app\src\debug\AndroidManifest.xml:11:19-83
+27-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\debug\AndroidManifest.xml:11:9-86
+27-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\debug\AndroidManifest.xml:11:19-83
 28        <activity
-28-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:15:7-25:18
+28-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:15:7-25:18
 29            android:name="com.dairy.MainActivity"
-29-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:16:9-37
+29-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:16:9-37
 30            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-30-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:18:9-86
+30-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:18:9-86
 31            android:label="@string/app_name"
-31-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:17:9-41
+31-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:17:9-41
 32            android:launchMode="singleTask"
-32-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:19:9-40
+32-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:19:9-40
 33            android:windowSoftInputMode="adjustResize" >
-33-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:20:9-51
+33-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:20:9-51
 34            <intent-filter>
-34-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:21:9-24:25
+34-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:21:9-24:25
 35                <action android:name="android.intent.action.MAIN" />
-35-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:22:13-65
-35-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:22:21-62
+35-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:22:13-65
+35-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:22:21-62
 36
 37                <category android:name="android.intent.category.LAUNCHER" />
-37-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:23:13-73
-37-->D:\React Native\DairyApp\android\app\src\main\AndroidManifest.xml:23:23-70
+37-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:23:13-73
+37-->C:\Users\ahmad\Desktop\React Native\Dairy\android\app\src\main\AndroidManifest.xml:23:23-70
 38            </intent-filter>
 39        </activity>
 40        <activity
-40-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+40-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
 41            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-41-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+41-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
 42            android:exported="false"
-42-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+42-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
 43            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-43-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+43-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
 44
 45        <meta-data
-45-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+45-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 46            android:name="com.google.android.gms.version"
-46-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+46-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 47            android:value="@integer/google_play_services_version" />
-47-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DELL\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+47-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ahmad\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 48    </application>
 49
 50</manifest>

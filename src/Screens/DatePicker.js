@@ -2,13 +2,23 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
+
+import { NativeModules, Platform } from 'react-native';
+
+const locale =
+  Platform.OS === 'ios'
+    ? NativeModules.SettingsManager.settings.AppleLocale
+    : NativeModules.I18nManager.localeIdentifier;
+let deviceLanguage = locale.substring(0, 2);
+
+
 const DatePicker = ({ navigation }) => {
 
   const [selectedDate, setSelectedDate] = useState();
 
   return (
     <View style={{ paddingTop: 50, flex: 1 }}>
-      <Calendar style={{ height: 350}}
+      <Calendar style={{ height: 350 }}
         theme={{
           backgroundColor: '#ffffff',
           calendarBackground: '#ffffff',

@@ -18,6 +18,12 @@ const ViewReport = ({ navigation }) => {
   var date = new Date()
   const [startDate, setStartDate] = useState(date);
   const [toDate, setToDate] = useState(date)
+  let dateNow;
+  let MonthName = [
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun",
+    "Jul", "Aug", "Sept",
+    "Oct", "Nov", "Dec"];
 
   const showDatePicker = (type) => {
     setType(type)
@@ -28,7 +34,6 @@ const ViewReport = ({ navigation }) => {
     type == 'from' ? setStartDate(date) : setToDate(date)
     setDatePickerVisibility(false)
   };
-
 
   useEffect(async () => {
     await getReport();
@@ -55,18 +60,24 @@ const ViewReport = ({ navigation }) => {
       <StatusBar backgroundColor="#000" />
       <CircleBackground />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 12 }}>
-        <Text style={Theme.datetext}>
-          From Date
-        </Text>
-        <Text style={Theme.datetext}>
-          To Date
-        </Text>
+        <View style={Theme.datePickerViewDes}>
+          <Text style={Theme.datetext}>
+            From Date
+          </Text>
+          <Text onPress={() => showDatePicker('from')}>{startDate.toISOString().split("T")[0]}</Text>
+        </View>
+        <View style={Theme.datePickerViewDes}>
+          <Text style={Theme.datetext}>
+            To Date
+          </Text>
+          <Text onPress={() => showDatePicker('to')}>{toDate.toISOString().split("T")[0]}</Text>
+        </View>
       </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 12 }}>
+      {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 12 }}>
         <Text onPress={() => showDatePicker('from')}>{startDate.toISOString().split("T")[0]}</Text>
         <Text onPress={() => showDatePicker('to')}>{toDate.toISOString().split("T")[0]}</Text>
-      </View>
-     
+      </View> */}
+
 
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
@@ -74,13 +85,13 @@ const ViewReport = ({ navigation }) => {
         onConfirm={handleConfirm}
         onCancel={() => setDatePickerVisibility(false)}
       />
-       <View style={{ flexDirection: 'row', padding: 15, justifyContent:'space-around'}}>
-        <Text style={[Theme.datetext,{}]}>{content.Products}</Text>
-        <Text style={[Theme.datetext,{}]}>{content.Quantity}</Text>
-        <Text style={[Theme.datetext,{}]}>{content.Price}</Text>
-        <Text style={[Theme.datetext,{}]}>{content.Amount}</Text>
-        <Text style={[Theme.datetext,{}]}>{content.Date}</Text> 
-       
+      <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-around' }}>
+        <Text style={[Theme.datetext, { width: '32%', textAlign: 'center' }]}>{content.Products}</Text>
+        <Text style={[Theme.datetext, { width: '18%', textAlign: 'center' }]}>{content.Quantity}</Text>
+        <Text style={[Theme.datetext, { width: '18%', textAlign: 'center' }]}>{content.Price}</Text>
+        <Text style={[Theme.datetext, { width: '18%', textAlign: 'center' }]}>{content.Amount}</Text>
+        <Text style={[Theme.datetext, { width: '14%', textAlign: 'right' }]}>{content.Date}</Text>
+
       </View>
       {isLoading ? <Loader1 /> :
         <FlatList style={{ flex: 1, }}
@@ -91,31 +102,31 @@ const ViewReport = ({ navigation }) => {
           (
             <TouchableOpacity disabled={true} style={{ backgroundColor: item.isSaved ? 'rgba(239, 239, 238, 0.5)' : 'white', opacity: 1.6, borderRadius: 25, marginVertical: 15, marginHorizontal: 10, padding: 20 }}>
               <View style={{ alignItems: 'center' }}>
-                <Text numberOfLines={2} style={{ fontWeight: 'bold',fontSize:24 }}>{item.customerName}</Text>
+                <Text numberOfLines={2} style={{ fontWeight: 'bold', fontSize: 24 }}>{item.customerName}</Text>
               </View>
-           
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+              <View style={{ flexDirection: 'row' }}>
                 <View style={{ flexDirection: 'row', flex: 1, marginTop: 15 }}>
-              
+
                   <View style={{ flex: 1, }}>
                     {item.packing.map((item, key) => (
-                    
-                      <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'space-between' ,marginVertical:5}}>
-                        <Text numberOfLines={2} style={{ fontWeight:'bold', width: '30%' }}>{item.productName}</Text>
-                       
-                        <Text >{item.morningQty}</Text>
-                        <Text >{item.rate}</Text>
-                        <Text >{item.totalAmount}</Text>
-                        <Text>{item.saleDate.split("T")[0]}</Text>
-                       
+
+                      <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'space-between', marginVertical: 5 }}>
+                        <Text numberOfLines={3} style={{ fontWeight: 'bold', width: '32%' }}>{item.productName}</Text>
+
+                        <Text style={{ width: '18%', textAlign: 'center' }}>{item.morningQty}</Text>
+                        <Text style={{ width: '18%', textAlign: 'center' }}>{item.rate}</Text>
+                        <Text numberOfLines={2} style={{ width: '18%', paddingHorizontal: 2, textAlign: 'center' }}>{item.totalAmount}</Text>
+                        <Text style={{ width: '14%', textAlign: 'right' }}>{MonthName[new Date(item.saleDate).getMonth()]} {new Date(item.saleDate).getDate()}</Text>
+
                       </View>
-                     
-                    
+
+
                     ))}
                   </View>
-               
+
                 </View>
-              
+
               </View>
             </TouchableOpacity>
           )}
