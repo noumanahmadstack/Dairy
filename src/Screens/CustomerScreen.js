@@ -20,6 +20,7 @@ const AddCustomer = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [userMobile, setUserMobile] = useState('');
+
   const [serialNo, setSerialNo] = useState('')
   const [userPrice, setUserPrice] = useState('');
   const [quantity, setquantity] = useState('');
